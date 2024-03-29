@@ -1,13 +1,13 @@
 function __print_evo_functions_help() {
 cat <<EOF
-Additional Evolution X functions:
+Additional Devolution X functions:
 - cout:            Changes directory to out.
 - mmp:             Builds all of the modules in the current directory and pushes them to the device.
 - mmap:            Builds all of the modules in the current directory and its dependencies, then pushes the package to the device.
 - mmmp:            Builds all of the modules in the supplied directories and pushes them to the device.
 - aospremote:      Add git remote for matching AOSP repository.
 - cloremote:       Add git remote for matching CodeLinaro repository.
-- githubremote:    Add git remote for Evolution X Github.
+- githubremote:    Add git remote for Devolution X Github.
 - mka:             Builds using SCHED_BATCH on all processors.
 - mkap:            Builds the module(s) using mka and pushes them to the device.
 - cmka:            Cleans and builds using mka.
@@ -54,7 +54,7 @@ function brunch()
 {
     breakfast $*
     if [ $? -eq 0 ]; then
-        mka evolution
+        mka devolution
     else
         echo "No such item in brunch menu. Try 'breakfast'"
         return 1
@@ -66,7 +66,7 @@ function breakfast()
 {
     target=$1
     local variant=$2
-    local aosp_target_release=$(cat ${ANDROID_BUILD_TOP}/vendor/evolution/vars/aosp_target_release 2>/dev/null)
+    local aosp_target_release=$(cat ${ANDROID_BUILD_TOP}/vendor/devolution/vars/aosp_target_release 2>/dev/null)
 
     if [ $# -eq 0 ]; then
         # No arguments, so let's have the full menu
@@ -81,7 +81,7 @@ function breakfast()
                 variant="userdebug"
             fi
 
-            lunch evolution_$target-$aosp_target_release-$variant
+            lunch devolution_$target-$aosp_target_release-$variant
         fi
     fi
     return $?
@@ -92,7 +92,7 @@ alias bib=breakfast
 function eat()
 {
     if [ "$OUT" ] ; then
-        ZIPPATH=`ls -tr "$OUT"/EvolutionX-*.zip | tail -1`
+        ZIPPATH=`ls -tr "$OUT"/DevolutionX-*.zip | tail -1`
         if [ ! -f $ZIPPATH ] ; then
             echo "Nothing to eat"
             return 1
@@ -301,7 +301,7 @@ function githubremote()
 
     local PROJECT=$(echo $REMOTE | sed -e "s#platform/#android/#g; s#/#_#g")
 
-    git remote add github https://github.com/Evolution-X/$PROJECT
+    git remote add github https://github.com/DevolutionX-ROM/$PROJECT
     echo "Remote 'github' created"
 }
 
@@ -405,7 +405,7 @@ function cmka() {
     if [ ! -z "$1" ]; then
         for i in "$@"; do
             case $i in
-                evolution|otapackage|systemimage)
+                devolution|otapackage|systemimage)
                     mka installclean
                     mka $i
                     ;;
@@ -601,7 +601,7 @@ alias cmkap='dopush cmka'
 
 function repopick() {
     T=$(gettop)
-    python3 $T/vendor/evolution/build/tools/repopick.py $@
+    python3 $T/vendor/devolution/build/tools/repopick.py $@
 }
 
 function sort-blobs-list() {

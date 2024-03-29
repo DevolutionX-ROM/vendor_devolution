@@ -52,7 +52,7 @@ PRODUCT_PRODUCT_PROPERTIES += \
     org.evolution.build_type=$(EVO_BUILD_TYPE) \
     org.evolution.build_codename=$(EVO_CODENAME)
 
-$(call inherit-product-if-exists, vendor/evolution/build/target/product/security/evolution_security.mk)
+$(call inherit-product-if-exists, vendor/devolution/build/target/product/security/evolution_security.mk)
 
 # Check signed
 EVO_SIGNED ?= false

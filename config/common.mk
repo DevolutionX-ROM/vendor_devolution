@@ -109,24 +109,24 @@ PRODUCT_SYSTEM_PROPERTIES += \
 
 # Evolution X-specific broadcast actions whitelist
 PRODUCT_COPY_FILES += \
-    vendor/evolution/config/permissions/evolution-sysconfig.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/sysconfig/evolution-sysconfig.xml
+    vendor/devolution/config/permissions/evolution-sysconfig.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/sysconfig/evolution-sysconfig.xml
 
 # Evolution X-specific init rc file
 PRODUCT_COPY_FILES += \
-    vendor/evolution/prebuilt/common/etc/init/init.evolution-system_ext.rc:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/init/init.evolution-system_ext.rc
+    vendor/devolution/prebuilt/common/etc/init/init.evolution-system_ext.rc:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/init/init.evolution-system_ext.rc
 
 # Copy all Evolution X-specific init rc files
 PRODUCT_COPY_FILES += \
-    vendor/evolution/prebuilt/common/etc/init/init.evolution-x-updater.rc:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/init/init.evolution-x-updater.rc
+    vendor/devolution/prebuilt/common/etc/init/init.evolution-x-updater.rc:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/init/init.evolution-x-updater.rc
 
 # LineageHW permission
 PRODUCT_COPY_FILES += \
-    vendor/evolution/config/permissions/privapp-permissions-lineagehw.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/privapp-permissions-lineagehw.xml
+    vendor/devolution/config/permissions/privapp-permissions-lineagehw.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/privapp-permissions-lineagehw.xml
 
 # Permissions for lineage sdk services
 PRODUCT_COPY_FILES += \
-    vendor/evolution/config/permissions/org.lineageos.health.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/org.lineageos.health.xml \
-    vendor/evolution/config/permissions/org.lineageos.livedisplay.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/org.lineageos.livedisplay.xml
+    vendor/devolution/config/permissions/org.lineageos.health.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/org.lineageos.health.xml \
+    vendor/devolution/config/permissions/org.lineageos.livedisplay.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/org.lineageos.livedisplay.xml
 
 # Enable SIP+VoIP on all targets
 PRODUCT_COPY_FILES += \
@@ -135,7 +135,7 @@ PRODUCT_COPY_FILES += \
 # Keylayout
 PRODUCT_COPY_FILES += \
     frameworks/base/data/keyboards/Vendor_045e_Product_028e.kl:$(TARGET_COPY_OUT_PRODUCT)/usr/keylayout/Vendor_045e_Product_0719.kl \
-    vendor/evolution/misc/keylayout/Vendor_2dc8_Product_6006.kl:$(TARGET_COPY_OUT_PRODUCT)/usr/keylayout/Vendor_2dc8_Product_6006.kl
+    vendor/devolution/misc/keylayout/Vendor_2dc8_Product_6006.kl:$(TARGET_COPY_OUT_PRODUCT)/usr/keylayout/Vendor_2dc8_Product_6006.kl
 
 # Enable transitional log for Privileged permissions
 PRODUCT_SYSTEM_PROPERTIES += \
@@ -148,7 +148,7 @@ PRODUCT_PACKAGES += \
 
 # Clean up packages cache to avoid wrong strings and resources
 PRODUCT_COPY_FILES += \
-    vendor/evolution/prebuilt/common/bin/clean_cache.sh:system/bin/clean_cache.sh
+    vendor/devolution/prebuilt/common/bin/clean_cache.sh:system/bin/clean_cache.sh
 
 # Support many users/work profiles
 PRODUCT_SYSTEM_PROPERTIES += \
@@ -242,9 +242,9 @@ PRODUCT_PRODUCT_PROPERTIES += \
     ro.input.video_enabled=false
 
 # Overlay
-PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += vendor/evolution/overlay
+PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += vendor/devolution/overlay
 PRODUCT_PACKAGE_OVERLAYS += \
-    vendor/evolution/overlay/common
+    vendor/devolution/overlay/common
 
 # Anything including updatable_apex.mk should have done so by now.
 ifeq ($(TARGET_FLATTEN_APEX), false)
@@ -254,45 +254,45 @@ $(call inherit-product-if-exists, vendor/partner_modules/build/mainline_modules_
 endif
 
 # Inherit from animations config
-$(call inherit-product, vendor/evolution/config/animations.mk)
+$(call inherit-product, vendor/devolution/config/animations.mk)
 
 # Inherit from audio config
 $(call inherit-product-if-exists, frameworks/base/data/sounds/AudioPackage14.mk)
-$(call inherit-product, vendor/evolution/config/audio.mk)
+$(call inherit-product, vendor/devolution/config/audio.mk)
 
 # Inherit from bootanimation config
 ifeq ($(TARGET_IS_PIXEL), true)
-$(call inherit-product, vendor/evolution/config/bootanimation_pixels.mk)
+$(call inherit-product, vendor/devolution/config/bootanimation_pixels.mk)
 else ifneq ($(TARGET_USES_LEGACY_BOOTANIMATION), true)
-$(call inherit-product, vendor/evolution/config/bootanimation.mk)
+$(call inherit-product, vendor/devolution/config/bootanimation.mk)
 endif
 
 # Certification
 $(call inherit-product-if-exists, vendor/certification/config.mk)
 
 # Clocks
-$(call inherit-product, vendor/evolution/config/clocks.mk)
+$(call inherit-product, vendor/devolution/config/clocks.mk)
 
 # Inherit from fonts config
-$(call inherit-product, vendor/evolution/config/fonts.mk)
+$(call inherit-product, vendor/devolution/config/fonts.mk)
 
 # Inherit from gfonts config
-$(call inherit-product, vendor/evolution/config/gfonts.mk)
+$(call inherit-product, vendor/devolution/config/gfonts.mk)
 
 # Inherit from packages config
-$(call inherit-product, vendor/evolution/config/packages.mk)
+$(call inherit-product, vendor/devolution/config/packages.mk)
 
 # Inherit from rro_overlays config
-$(call inherit-product, vendor/evolution/config/rro_overlays.mk)
+$(call inherit-product, vendor/devolution/config/rro_overlays.mk)
 
 # Inherit from textclassifier config
-$(call inherit-product, vendor/evolution/config/textclassifier.mk)
+$(call inherit-product, vendor/devolution/config/textclassifier.mk)
 
 # Inherit from themes config
-$(call inherit-product, vendor/evolution/config/themes.mk)
+$(call inherit-product, vendor/devolution/config/themes.mk)
 
 # Inherit from our version config
-$(call inherit-product, vendor/evolution/config/version.mk)
+$(call inherit-product, vendor/devolution/config/version.mk)
 
 # Pixel Framework
 # $(call inherit-product-if-exists, vendor/pixel-framework/config.mk)

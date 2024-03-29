@@ -17,7 +17,7 @@ then
 fi
 
 # Assuming this script is run from TOP of workspace
-export formatter_script=$(realpath vendor/evolution/tools/changelog_repo_formatter.sh)
+export formatter_script=$(realpath vendor/devolution/tools/changelog_repo_formatter.sh)
 
 touch $Changelog
 
